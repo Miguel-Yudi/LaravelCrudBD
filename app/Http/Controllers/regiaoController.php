@@ -9,11 +9,19 @@ use Illuminate\Http\Request;
 class RegiaoController extends Controller
 {
     // Listar todos
-    public function index()
-    {
-        $regioes = Regiao::all();
-        return view('regiao.index', compact('regioes'));
-    }
+    public function index(Request $request)
+{
+    $busca = $request->input('busca');
+
+    $regioes = Regiao::query()
+        ->when($busca, function ($query, $busca) {
+            $query->where('nome_reg', 'like', "%{$busca}%")
+                  ->orWhere('id_reg', $busca);
+        })
+        ->get();
+
+    return view('regioes.index', compact('regioes', 'busca'));
+}
 
     // Formulário de criação
     public function create()
@@ -30,19 +38,19 @@ class RegiaoController extends Controller
         ]);
 
         Regiao::create($request->all());
-        return redirect()->route('regiao.index')->with('success', 'Região criada com sucesso!');
+        return redirect()->route('regioes.index')->with('success', 'Região criada com sucesso!');
     }
 
     // Mostrar um produto
     public function show(Regiao $regiao)
     {
-        return view('regiao.show', compact('regiao'));
+        return view('regioes.index', compact('regiao'));
     }
 
     // Formulário de edição
     public function edit(Regiao $regiao)
     {
-        return view('regiao.edit', compact('regiao'));
+        return view('regioes.edit', compact('regiao'));
     }
 
     // Atualizar produto
@@ -54,7 +62,7 @@ class RegiaoController extends Controller
         ]);
 
         $regiao->update($request->all());
-        return redirect()->route('regiao.index')->with('success', 'Região atualizada com sucesso!');
+        return redirect()->route('regioes.index')->with('success', 'Região atualizada com sucesso!');
     }
 
 }

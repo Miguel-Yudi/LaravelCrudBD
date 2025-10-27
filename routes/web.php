@@ -13,7 +13,19 @@ use App\Http\Controllers\PontosController;
 use App\Http\Controllers\RespVeiculoController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
+});
+
+Route::get('/regioes', function () {
+    return view('regioes.index');
+});
+
+Route::get('/regioes/index', function () {
+    return view('regioes.index');
+});
+
+Route::get('/regioes/cadastro', function () {
+    return view('regioes.cadastrar_reg');
 });
 
 Route::resource('produtos', ProdutoController::class);
@@ -23,5 +35,6 @@ Route::resource('produtoVendido', ProdutoVendidoController::class);
 Route::resource('vendedor', VendedorController::class);
 Route::resource('veiculo', VeiculoController::class);
 Route::resource('regiao', RegiaoController::class);
+Route::resource('regioes', RegiaoController::class) ->parameters(['regioes' => 'regiao']);
 Route::resource('pontos', PontosController::class);
 Route::resource('respVeiculo', respVeiculoController::class);

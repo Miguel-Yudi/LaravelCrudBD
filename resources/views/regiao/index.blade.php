@@ -11,11 +11,6 @@
             Nome: {{ $regiao->nome_reg }} Descrição: {{ $regiao->desc_reg }}
             <a href="{{ route('regiao.show', $regiao) }}">Ver</a>
             <a href="{{ route('regiao.edit', $regiao) }}">Editar</a>
-            <form action="{{ route('regiao.destroy', $regiao) }}" method="POST" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Excluir</button>
-            </form>
         </li>
     @endforeach
 </ul>
