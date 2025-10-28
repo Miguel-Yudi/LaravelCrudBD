@@ -13,10 +13,10 @@
     <nav class="navbar">
         <div class="logo">Beleza</div>
         <ul class="nav-menu">
-            <li><a href="../produtos/procurar-produto.html">Produtos</a></li>
-            <li><a href="../clientes/index.html">Clientes</a></li>
-            <li><a href="../vendedores/index.html">Vendedores</a></li>
-            <li><a href="../veiculos/index.html">Veículos</a></li>
+            <li><a href="../produtos">Produtos</a></li>
+            <li><a href="../clientes">Clientes</a></li>
+            <li><a href="../vendedores">Vendedores</a></li>
+            <li><a href="../veiculos">Veículos</a></li>
         </ul>
         <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menu de navegação" title="Abrir menu">
             <span aria-hidden="true"></span>

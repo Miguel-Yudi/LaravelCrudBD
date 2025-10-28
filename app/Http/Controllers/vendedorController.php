@@ -9,10 +9,18 @@ use Illuminate\Http\Request;
 class VendedorController extends Controller
 {
     // Listar todos os vendedores
-    public function index()
+    public function index(Request $request)
     {
-        $vendedores = Vendedor::with('regiao')->get();
-        return view('vendedores.index', compact('vendedores'));
+      $busca = $request->input('busca');
+
+    $vendedores = Vendedor::query()
+        ->when($busca, function ($query, $busca) {
+            $query->where('nome_vend', 'like', "%{$busca}%")
+                  ->orWhere('id_vend', $busca);
+        })
+        ->get();
+
+    return view('vendedores.index', compact('vendedores', 'busca'));
     }
 
     // Formulário de criação de novo vendedor
@@ -25,11 +33,12 @@ class VendedorController extends Controller
     // Salvar novo vendedor
     public function store(Request $request)
     {
+
         $request->validate([
             'nome_vend' => 'required|string|max:100',
-            'email_vend' => 'required|email|unique:vendedores,email_vend',
-            'telefone_vend' => 'nullable|string|max:20',
-            'id_reg' => 'required|exists:regioes,id_reg',
+            'email_vend' => 'required|email|unique:vendedor,email_vend',
+            'tel_vend' => 'nullable|string|max:20',
+            'id_reg' => 'required|exists:regiao,id_reg',
         ]);
 
         Vendedor::create($request->all());
@@ -59,9 +68,9 @@ class VendedorController extends Controller
     {
         $request->validate([
             'nome_vend' => 'required|string|max:100',
-            'email_vend' => 'required|email|unique:vendedores,email_vend,' . $id . ',id_vend',
-            'telefone_vend' => 'nullable|string|max:20',
-            'id_reg' => 'required|exists:regioes,id_reg',
+            'email_vend' => 'required|email|unique:vendedor,email_vend,' . $id . ',id_vend',
+            'tel_vend' => 'nullable|string|max:20',
+            'id_reg' => 'required|exists:regiao,id_reg',
         ]);
 
         $vendedor = Vendedor::findOrFail($id);

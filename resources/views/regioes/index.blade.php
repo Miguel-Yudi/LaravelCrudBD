@@ -13,9 +13,9 @@
     <nav class="navbar">
         <div class="logo">Beleza</div>
         <ul class="nav-menu">
-            <li><a href="../produtos/procurar-produto.html">Produtos</a></li>
-            <li><a href="../clientes/index.html">Clientes</a></li>
-            <li><a href="../vendedores/index.html">Vendedores</a></li>
+            <li><a href="../produtos">Produtos</a></li>
+            <li><a href="../clientes/">Clientes</a></li>
+            <li><a href="../vendedores">Vendedores</a></li>
             <li><a href="../home/index.html">Veículos</a></li>
         </ul>
         <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menu de navegação" title="Abrir menu">
@@ -36,10 +36,10 @@
             <h2>Menu</h2>
         </div>
         <ul class="menu-items">
-            <li><a href="../home/index.html">🏠 Início</a></li>
-            <li><a href="../produtos/procurar-produto.html">👤 Produtos</a></li>
-            <li><a href="../clientes/index.html">💼 Clientes</a></li>
-            <li><a href="../vendedores/index.html">📁 Vendedores</a></li>
+            <li><a href="../home">🏠 Início</a></li>
+            <li><a href="../produtos">👤 Produtos</a></li>
+            <li><a href="../clientes">💼 Clientes</a></li>
+            <li><a href="../vendedores">📁 Vendedores</a></li>
             <li><a href="index.html">📝 Região</a></li>
         </ul>
     </div>
