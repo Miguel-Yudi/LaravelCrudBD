@@ -8,10 +8,18 @@ use Illuminate\Http\Request;
 class VeiculoController extends Controller
 {
     // Exibe todos os veículos
-    public function index()
+    public function index(Request $request)
     {
-        $veiculos = Veiculo::with('responsaveis')->get();
-        return view('veiculos.index', compact('veiculos'));
+         $busca = $request->input('busca');
+
+        $veiculos = Veiculo::query()
+        ->when($busca, function ($query, $busca) {
+            $query->where('modelo_veiculo', 'like', "%{$busca}%")
+                  ->orWhere('id_veiculo', $busca);
+        })
+        ->get();
+
+    return view('veiculos.index', compact('veiculos', 'busca'));
     }
 
     // Mostra o formulário para criar um novo veículo
@@ -24,9 +32,9 @@ class VeiculoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'modelo' => 'required|string|max:100',
-            'placa' => 'required|string|max:10|unique:veiculos,placa',
-            'descricao' => 'nullable|string|max:255',
+            'modelo_veiculo' => 'required|string|max:100',
+            'placa_veiculo' => 'required|string|max:10|unique:veiculo,placa_veiculo',
+            'desc_veiculo' => 'nullable|string|max:255',
         ]);
 
         Veiculo::create($request->all());
@@ -54,9 +62,9 @@ class VeiculoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'modelo' => 'required|string|max:100',
-            'placa' => 'required|string|max:10|unique:veiculos,placa,' . $id,
-            'descricao' => 'nullable|string|max:255',
+           'modelo_veiculo' => 'required|string|max:100',
+            'placa_veiculo' => 'required|string|max:10|unique:veiculo,placa_veiculo,' . $id . ',id_veiculo',
+            'desc_veiculo' => 'nullable|string|max:255',
         ]);
 
         $veiculo = Veiculo::findOrFail($id);

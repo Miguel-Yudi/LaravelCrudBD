@@ -44,13 +44,28 @@ Route::get('/vendedores/cadastro', function () {
     return view('vendedores.cadastro');
 });
 
+
+Route::get('/veiculos', function () {
+    return view('veiculos.index');
+});
+
+Route::get('/veiculos/cadastro', function () {
+    return view('veiculos.cadastro');
+});
+
+Route::get('/veiculos/edit', function () {
+    return view('veiculos.edit');
+});
+
+
+
 Route::resource('produtos', ProdutoController::class);
 Route::resource('cliente', clienteController::class);
 Route::resource('notaFiscal', notaFiscalController::class);
 Route::resource('produtoVendido', ProdutoVendidoController::class);
 Route::resource('vendedor', VendedorController::class);
 Route::resource('vendedores', VendedorController::class);
-Route::resource('veiculo', VeiculoController::class);
+Route::resource('veiculos', VeiculoController::class);
 Route::resource('regiao', RegiaoController::class);
 Route::resource('regioes', RegiaoController::class) ->parameters(['regioes' => 'regiao']);
 Route::resource('pontos', PontosController::class);

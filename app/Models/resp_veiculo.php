@@ -9,7 +9,7 @@ class Resp_Veiculo extends Model
 {
     use HasFactory;
 
-    protected $table = 'resp_veiculo';
+    protected $table = 'resp_veiculos';
     protected $primaryKey = 'id_resp_veiculo';
 
     protected $fillable = [

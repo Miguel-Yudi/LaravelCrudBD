@@ -71,17 +71,17 @@
       </div>
     </div>
 
-    <!-- 🔹 Nova seção de exibição logo abaixo dos inputs -->
+    <!-- 🔹 Nova seção de exibição logo abaixo dos inputs 
     <section class="parte4" id="exibicao-regiao">
       <h2>Região Selecionada</h2>
       <div class="regiao-card">
-        <!--Para a imagem aparecer tire o display none na linha a baixo-->
+        Para a imagem aparecer tire o display none na linha a baixo
         <img id="imagem-preview" src="../../images/imagem_rosa.png" alt="Imagem da região" style="display: none;">
         <p><strong>Nome:</strong> <span id="nome-exibido">—</span></p>
         <p><strong>Código:</strong> <span id="codigo-exibido">—</span></p>
       </div>
     </section>
-
+    -->
     <div class="parte3">
       <p>Região já existe?</p>
       <button id="editar-btn">Editar</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Resp_Veiculo;
 
 class Veiculo extends Model
 {
@@ -21,6 +22,6 @@ class Veiculo extends Model
 
     public function responsaveis()
     {
-        return $this->hasMany(RespVeiculo::class, 'id_veiculo');
+        return $this->hasMany(Resp_Veiculo::class, 'id_veiculo');
     }
 }
