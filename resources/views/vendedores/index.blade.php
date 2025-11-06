@@ -46,7 +46,7 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
     <section class="vendedores">
-      <h2 class="titulo">Vendedores</h2>
+      <h2 class="titulo">Tabela de vendedores</h2>
 
       <div class="form-section">
         <h3>Procurar vendedor</h3>
@@ -68,7 +68,7 @@
 
 
     <div class="tabela-ceps">
-            <h2>Tabela de Municípios e CEPs</h2>
+            <h2>Tabela de vendedores</h2>
             <table>
                <thead>
         <tr>

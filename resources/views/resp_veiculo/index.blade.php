@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regiões | MeuSite</title>
-  <link rel="stylesheet" href="veiculos.css">
+  <link rel="stylesheet" href="{{ asset('css/veiculos.css') }}">
 </head>
 
 <body>
@@ -54,25 +54,63 @@
       <h1>Responsavel</h1>
     </div>
 
+    <form method="GET" action="{{ route('respVeiculo.index') }}"> 
     <!-- Formulário -->
     <div class="parte2">
       <h2>Procurar responsaveis</h2>
-
       <div class="input-group">
-        <label for="codigo_da_venda">Código da venda</label>
-        <input type="text" id="codigo_da_venda" name="nome" placeholder="Digite o codigo_da_venda" title="Nome do Veiculo">
+        <div class="flex">
+          <label for="nome">Pesquisa:</label>
+        <input type="text" id="nome" name="busca" placeholder="Digite o nome ou código da região" title="Nome da região">
+        </div>
+        <div class="flex">
+          <label for="data">Data:</label>
+          <input type="date" name="data" id="data">
+        </div>
       </div>
 
     </div>
 
     <!-- Botão inferior -->
     <div class="parte3">
-      <p>responsavel não existe?</p>
-      <button type="button" title="Cadastrar nova região">Procurar</button>
+      <a href="resp_veiculo/cadastro"><p>Registro não existe?</p></a>
+      <button type="submit" title="Cadastrar nova região">Procurar</button>
     </div>
+    </form>
+    
+
+    <div class="tabela-ceps">
+            <h2>Tabela de vendedores</h2>
+            <table>
+               <thead>
+        <tr>
+            <th>Código</th>
+            <th>Vendedor</th>
+            <th>Veiculo</th>
+            <th>Data</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @forelse ($resp_veiculos as $resp_veiculo)
+            <tr>
+                <td>{{ $resp_veiculo->id_resp_veiculo }}</td>
+                <td>{{ $resp_veiculo->id_veiculo }}</td>
+                <td>{{ $resp_veiculo->id_vend }}</td>
+                <td>{{ $resp_veiculo->data }}</td>
+                <td><a href="{{ route('respVeiculo.edit', $resp_veiculo) }}">Editar</a></td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="3">Nenhuma região encontrada.</td>
+            </tr>
+        @endforelse
+            </tbody>
+            </table>
+        </div>
   </main>
 
-  <script src="script.js"></script>
+  <script src="{{ asset('jd/script.js') }}"></script>
 </body>
 
 </html>

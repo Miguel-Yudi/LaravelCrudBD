@@ -57,6 +57,10 @@ Route::get('/veiculos/edit', function () {
     return view('veiculos.edit');
 });
 
+Route::get('/resp_veiculo/cadastro', function () {
+    return view('resp_veiculo.cadastro');
+});
+
 
 
 Route::resource('produtos', ProdutoController::class);

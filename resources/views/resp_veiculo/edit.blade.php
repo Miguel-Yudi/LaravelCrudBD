@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regiões | MeuSite</title>
-  <link rel="stylesheet" href="veiculos.css">
+  <link rel="stylesheet" href="{{ asset('css/veiculos.css') }}">
 </head>
 
 <body>
@@ -52,32 +52,42 @@
       <h1>Gerenciamento de responsavel</h1>
     </div>
 
+    <form action="{{ route('respVeiculo.update', $respVeiculo->id_resp_veiculo) }}" method="POST">
+    @csrf
+    @method('PUT')
     <div class="parte2">
       <h2>Editar responsavel</h2>
 
-      <div class="input-group">
-        <label for="codigo_res">Código do responsavel:</label>
-        <input type="text" id="codigo_res" placeholder="Digite o código o responsavel">
+      <div class="input-group flex">
+        <label for="codigo_resp_veiculo">Código do registro:</label>
+        <input type="text" id="codigo_resp_veiculo" placeholder="Digite o código o responsável" name="id_resp_veiculo" value="{{ $respVeiculo ->id_resp_veiculo }}" readonly>
       </div>
 
-      <div class="input-group">
-        <label for="venda">Venda:</label>
-        <input type="text" id="venda" placeholder="Digite o código da venda">
+      <div class="input-group flex">
+        <label for="codigo_res">Código do responsável:</label>
+        <input type="text" id="codigo_res" placeholder="Digite o código o responsável" name="id_vend" value="{{ $respVeiculo ->id_vend }}">
       </div>
 
-      <div class="input-group">
-        <label for="imagem">Imagem:</label>
-        <input type="file" id="imagem" name="imagem" accept="image/*">
+      <div class="input-group flex">
+        <label for="id_veiculo">Código do veículo:</label>
+        <input type="text" id="id_veiculo" placeholder="Digite o código da veículo" name="id_veiculo" value="{{ $respVeiculo ->id_veiculo }}">
       </div>
+
+      <div class="input-group flex">
+        <label for="data">Data:</label>
+        <input type="date" id="data" placeholder="Digite o código da veículo" name="data" value="{{ $respVeiculo ->data }}">
+      </div>
+
     </div>
 
     <div class="parte3">
-      <p>responsavel já existe?</p>
+      <a href="/respVeiculo"><p>Registro já existe?</p></a>
       <button type="submit">Editar</button>
     </div>
+    </form>
   </main>
 
-  <script src="script.js"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

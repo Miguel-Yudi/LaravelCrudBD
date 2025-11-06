@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regiões | MeuSite</title>
-  <link rel="stylesheet" href="veiculos.css">
+  <link rel="stylesheet" href="{{ asset('css/veiculos.css') }}">
 </head>
 
 <body>
@@ -52,32 +52,49 @@
       <h1>Cadastro de responsavel</h1>
     </div>
 
+    @if(session('success'))
+      <p style="color: green; font-weight: bold;">
+     {{ session('success') }}
+    </p>
+  @endif
+
+  @if($errors->any())
+    <ul style="color: red; font-weight: bold;">
+      @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+  </ul>
+  @endif
+
+    <form action="{{ route('respVeiculo.store') }}" method="POST">
+    @csrf
     <div class="parte2">
       <h2>Cadastrar responsavel</h2>
 
-      <div class="input-group">
-        <label for="codigo_res">Código do responsavel:</label>
-        <input type="text" id="codigo_res" placeholder="Digite o código o responsavel">
+      <div class="input-group flex">
+        <label for="codigo_res">Código do vendedor:</label>
+        <input type="text" id="codigo_res" placeholder="Digite o código do vendedor" name="id_vend">
       </div>
 
-      <div class="input-group">
-        <label for="venda">Venda:</label>
-        <input type="text" id="venda" placeholder="Digite o código da venda">
+      <div class="input-group flex">
+        <label for="veiculo">Código do veiculo:</label>
+        <input type="text" id="veiculo" placeholder="Digite o código do veiculo" name="id_veiculo">
       </div>
 
-      <div class="input-group">
-        <label for="imagem">Imagem:</label>
-        <input type="file" id="imagem" name="imagem" accept="image/*">
+      <div class="input-group flex">
+        <label for="imagem">Data:</label>
+        <input type="date" id="imagem" name="data">
       </div>
     </div>
 
     <div class="parte3">
-      <p>responsavel já existe?</p>
+      <a href="/respVeiculo"><p>Registro já existe?</p></a>
       <button type="submit">Cadastrar</button>
     </div>
+    </form>
   </main>
 
-  <script src="script.js"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

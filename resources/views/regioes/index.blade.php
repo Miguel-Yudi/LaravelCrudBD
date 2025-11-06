@@ -71,7 +71,7 @@
     </form>
 
   <div class="tabela-ceps">
-            <h2>Tabela de Municípios e CEPs</h2>
+            <h2>Tabela de Regiões</h2>
             <table>
                <thead>
         <tr>

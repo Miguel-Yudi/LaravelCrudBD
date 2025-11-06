@@ -58,29 +58,29 @@
       <form action="{{ route('veiculos.store') }}" method="POST">
       @csrf
       
-      <div class="input-group">
+      <div class="input-group flex">
         <label for="nome">Modelo:</label>
         <input type="text" id="nome" placeholder="Digite o modelo do veículo" name="modelo_veiculo">
       </div>
 
-      <div class="input-group">
+      <div class="input-group flex">
         <label for="codigo">Placa:</label>
         <input type="text" id="codigo" placeholder="Digite a placa do veículo" name="placa_veiculo">
       </div>
 
-      <div class="input-group">
+      <div class="input-group flex">
         <label for="marca">Descrição:</label>
         <input type="text" id="marca" placeholder="Digite a descrição do veículo" name="desc_veiculo">
       </div>
 
-      <div class="input-group">
+      <div class="input-group flex">
         <label for="placa">Ativo:</label>
         <input type="text" id="placa" placeholder="Veículo ativo?" name="ativo">
       </div>
     </div>
 
     <div class="parte3">
-      <a href="/veiculos"><p>Veículo já existe?</p></a>
+      <a href="../../veiculos"><p>Veículo já existe?</p></a>
       <button type="submit">Cadastrar</button>
     </div>
   </main>

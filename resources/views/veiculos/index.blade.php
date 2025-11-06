@@ -60,8 +60,10 @@
       <h2>Procurar Veiculos</h2>
 
       <div class="input-group">
-        <label for="nome">Buscar:</label>
-        <input type="text" id="nome" name="busca" placeholder="Digite o modelo ou código do veiculo" title="Nome do Veiculo">
+        <div class="flex">
+           <label for="nome">Buscar:</label>
+          <input type="text" id="nome" name="busca" placeholder="Digite o modelo ou código do veiculo" title="Nome do Veiculo">
+        </div>
       </div>
 
     </div>
@@ -75,7 +77,7 @@
 
 
     <div class="tabela-ceps">
-            <h2>Tabela de Municípios e CEPs</h2>
+            <h2>Tabela de veiculos</h2>
             <table>
                <thead>
         <tr>
