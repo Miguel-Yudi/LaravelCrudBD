@@ -46,25 +46,35 @@
 
   <main class="main-content">
     <div class="parte1">
-      <h1>Cadastro de Regiões</h1>
+      <h1>Cadastro de Pontos</h1>
     </div>
-    <form action="{{ route('regiao.store') }}" method="POST">
+    <form action="{{ route('pontos.store') }}" method="POST">
       @csrf
     <div class="parte2">
-      <h2>Cadastrar Região</h2>
+      <h2>Cadastrar Ponto</h2>
+
+      <div class="input-group">
+        <label for="nome">Região:</label>
+        <input type="text" id="nome" placeholder="Digite a região a qual o ponto pertence" name="id_reg">
+      </div>
 
       <div class="input-group">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite o nome da região" name="nome_reg">
+        <input type="text" id="nome" placeholder="Digite o nome do ponto" name="nome_pon">
       </div>
 
       <div class="input-group">
-        <label for="codigo">Descrição:</label>
-        <input type="text" id="codigo" placeholder="Digite a descrição da região" name="desc_reg">
+        <label for="desc">Descrição:</label>
+        <input type="text" id="desc" placeholder="Digite a descrição do ponto" name="desc_pon">
+      </div>
+
+      <div class="input-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" placeholder="Digite o endereço do ponto" name="endereco_pon">
       </div>
 
     <div class="parte3">
-      <a href="/regioes">Região já existe?</a>
+      <a href="/pontos">Ponto já existe?</a>
       <button type="submit">Cadastrar</button>
     </div>
     </form>

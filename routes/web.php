@@ -61,6 +61,14 @@ Route::get('/resp_veiculo/cadastro', function () {
     return view('resp_veiculo.cadastro');
 });
 
+Route::get('/pontos', function () {
+    return view('pontos.index');
+});
+
+Route::get('/pontos/cadastro', function () {
+    return view('pontos.cadastro');
+});
+
 
 
 Route::resource('produtos', ProdutoController::class);
@@ -72,5 +80,5 @@ Route::resource('vendedores', VendedorController::class);
 Route::resource('veiculos', VeiculoController::class);
 Route::resource('regiao', RegiaoController::class);
 Route::resource('regioes', RegiaoController::class) ->parameters(['regioes' => 'regiao']);
-Route::resource('pontos', PontosController::class);
+Route::resource('pontos', PontosController::class) ->parameters(['pontos' => 'ponto']);
 Route::resource('respVeiculo', respVeiculoController::class);

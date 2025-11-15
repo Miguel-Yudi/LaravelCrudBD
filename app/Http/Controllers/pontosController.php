@@ -10,12 +10,19 @@ use Illuminate\Http\Request;
 class PontosController extends Controller
 {
     // Listar todos
-    public function index()
-    {
-        $pontos = Pontos::all();
-        return view('pontos.index', compact('pontos'));
-    }
+   public function index(Request $request)
+{
+    $busca = $request->input('busca');
 
+    $pontos = Pontos::query()
+        ->when($busca, function ($query, $busca) {
+            $query->where('nome_pon', 'like', "%{$busca}%")
+                  ->orWhere('id_pon', $busca);
+        })
+        ->get();
+
+    return view('pontos.index', compact('pontos', 'busca'));
+}
     // Formulário de criação
     public function create()
     {
@@ -43,13 +50,13 @@ class PontosController extends Controller
     }
 
     // Formulário de edição
-    public function edit(Pontos $pontos)
+    public function edit(Pontos $ponto)
     {
-        return view('pontos.edit', compact('pontos'));
+        return view('pontos.edit', compact('ponto'));
     }
 
     // Atualizar produto
-    public function update(Request $request,Pontos $pontos)
+    public function update(Request $request,Pontos $ponto)
     {
         $request->validate([
             'id_reg' => 'required|numeric',
@@ -58,7 +65,7 @@ class PontosController extends Controller
             'endereco_pon' => 'required',
         ]);
 
-        $pontos->update($request->all());
+        $ponto->update($request->all());
         return redirect()->route('pontos.index')->with('success', 'Ponto atualizada com sucesso!');
     }
 
