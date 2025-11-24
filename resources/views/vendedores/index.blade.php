@@ -81,6 +81,7 @@
             <th>Telefone</th>
             <th>Ativo</th>
             <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -95,6 +96,15 @@
                 <td>{{ $vendedor->tel_vend }}</td>
                 <td>{{ $vendedor->ativo }}</td>
                 <td><a href="{{ route('vendedor.edit', $vendedor) }}">Editar</a></td>
+                <td>
+                <form action="{{ route('vendedor.destroy', $vendedor->id_vend) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este vendedor?')" class="delete">
+                    Excluir
+                    </button>
+                </form>
+                </td>
             </tr>
         @empty
             <tr>
