@@ -49,14 +49,14 @@
 
   <main class="main-content">
     <div class="parte1">
-      <h1>Gerenciamento de responsavel</h1>
+      <h1>Gerenciamento de responsável</h1>
     </div>
 
     <form action="{{ route('respVeiculo.update', $respVeiculo->id_resp_veiculo) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="parte2">
-      <h2>Editar responsavel</h2>
+      <h2>Editar responsável</h2>
 
       <div class="input-group flex">
         <label for="codigo_resp_veiculo">Código do registro:</label>

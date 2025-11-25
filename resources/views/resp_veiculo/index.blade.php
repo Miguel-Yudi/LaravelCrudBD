@@ -51,13 +51,13 @@
   <main class="main-content">
     <!-- Título -->
     <div class="parte1">
-      <h1>Responsavel</h1>
+      <h1>Responsável</h1>
     </div>
 
     <form method="GET" action="{{ route('respVeiculo.index') }}"> 
     <!-- Formulário -->
     <div class="parte2">
-      <h2>Procurar responsaveis</h2>
+      <h2>Procurar responsáveis</h2>
       <div class="input-group">
         <div class="flex">
           <label for="nome">Pesquisa:</label>
@@ -80,7 +80,7 @@
     
 
     <div class="tabela-ceps">
-            <h2>Tabela de vendedores</h2>
+            <h2>Tabela de registros</h2>
             <table>
                <thead>
         <tr>
@@ -89,6 +89,7 @@
             <th>Veiculo</th>
             <th>Data</th>
             <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -99,6 +100,15 @@
                 <td>{{ $resp_veiculo->id_vend }}</td>
                 <td>{{ $resp_veiculo->data }}</td>
                 <td><a href="{{ route('respVeiculo.edit', $resp_veiculo) }}">Editar</a></td>
+                <td>
+                <form action="{{ route('respVeiculo.destroy', $resp_veiculo->id_resp_veiculo) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este registro?')" class="delete">
+                    Excluir
+                    </button>
+                </form>
+                </td>
             </tr>
         @empty
             <tr>

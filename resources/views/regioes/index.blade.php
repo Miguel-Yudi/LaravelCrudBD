@@ -79,6 +79,7 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -88,6 +89,15 @@
                 <td>{{ $regiao->nome_reg }}</td>
                 <td>{{ $regiao->desc_reg }}</td>
                 <td><a href="{{ route('regioes.edit', $regiao) }}">Editar</a></td>
+                <td>
+                <form action="{{ route('regioes.destroy', $regiao->id_reg) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir esta região')" class="delete">
+                    Excluir
+                    </button>
+                </form>
+                </td>
             </tr>
         @empty
             <tr>

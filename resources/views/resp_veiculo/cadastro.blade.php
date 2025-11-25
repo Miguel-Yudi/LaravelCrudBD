@@ -49,7 +49,7 @@
 
   <main class="main-content">
     <div class="parte1">
-      <h1>Cadastro de responsavel</h1>
+      <h1>Cadastro de responsável</h1>
     </div>
 
     @if(session('success'))
@@ -69,7 +69,7 @@
     <form action="{{ route('respVeiculo.store') }}" method="POST">
     @csrf
     <div class="parte2">
-      <h2>Cadastrar responsavel</h2>
+      <h2>Cadastrar responsável</h2>
 
       <div class="input-group flex">
         <label for="codigo_res">Código do vendedor:</label>

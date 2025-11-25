@@ -88,6 +88,7 @@
             <th>Descrição</th>
             <th>Endereço</th>
             <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -99,6 +100,15 @@
                 <td>{{ $ponto->desc_pon }}</td>
                 <td>{{ $ponto->endereco_pon }}</td>
                 <td><a href="{{ route('pontos.edit', $ponto) }}">Editar</a></td>
+                <td>
+                <form action="{{ route('pontos.destroy', $ponto->id_pon) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este ponto?')" class="delete">
+                    Excluir
+                    </button>
+                </form>
+                </td>
             </tr>
         @empty
             <tr>

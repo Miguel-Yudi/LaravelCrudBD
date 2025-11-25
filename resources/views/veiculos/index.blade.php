@@ -86,6 +86,7 @@
             <th>Placa</th>
             <th>Descrição</th>
             <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -96,6 +97,15 @@
                 <td>{{ $veiculo->placa_veiculo }}</td>
                 <td>{{ $veiculo->desc_veiculo }}</td>
                 <td><a href="{{ route('veiculos.edit', $veiculo) }}">Editar</a></td>
+                <td>
+                <form action="{{ route('veiculos.destroy', $veiculo->id_veiculo) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este veiculo?')" class="delete">
+                    Excluir
+                    </button>
+                </form>
+                </td>
             </tr>
         @empty
             <tr>
